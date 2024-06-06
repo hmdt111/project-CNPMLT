@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLPhongTroModelStoreContainer" CdmEntityContainer="DBQLPhongTroEntities">
+    <EntitySetMapping Name="COSOVATCHATs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.COSOVATCHAT">
+        <MappingFragment StoreEntitySet="COSOVATCHAT">
+          <ScalarProperty Name="MAVATCHAT" ColumnName="MAVATCHAT" />
+          <ScalarProperty Name="TENVATCHAT" ColumnName="TENVATCHAT" />
+          <ScalarProperty Name="GIAVAtCHAT" ColumnName="GIAVAtCHAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DICHVUs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.DICHVU">
+        <MappingFragment StoreEntitySet="DICHVU">
+          <ScalarProperty Name="MADV" ColumnName="MADV" />
+          <ScalarProperty Name="TENDV" ColumnName="TENDV" />
+          <ScalarProperty Name="GIATIENDV" ColumnName="GIATIENDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOADONs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.HOADON">
+        <MappingFragment StoreEntitySet="HOADON">
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="TIENDIEN" ColumnName="TIENDIEN" />
+          <ScalarProperty Name="TIENNUOC" ColumnName="TIENNUOC" />
+          <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+          <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+          <ScalarProperty Name="TIENPHONG" ColumnName="TIENPHONG" />
+          <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+          <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
+          <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
+          <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
+          <ScalarProperty Name="TIENDV" ColumnName="TIENDV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HOPDONGs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.HOPDONG">
+        <MappingFragment StoreEntitySet="HOPDONG">
+          <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+          <ScalarProperty Name="NGAYKKIHD" ColumnName="NGAYKKIHD" />
+          <ScalarProperty Name="NGAYHETHANHD" ColumnName="NGAYHETHANHD" />
+          <ScalarProperty Name="TIENCOC" ColumnName="TIENCOC" />
+          <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+          <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+          <ScalarProperty Name="MAND" ColumnName="MAND" />
+          <ScalarProperty Name="MADV" ColumnName="MADV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NGUOIDUNGs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.NGUOIDUNG">
+        <MappingFragment StoreEntitySet="NGUOIDUNG">
+          <ScalarProperty Name="MAND" ColumnName="MAND" />
+          <ScalarProperty Name="TENND" ColumnName="TENND" />
+          <ScalarProperty Name="DIACHITHUONGTRU" ColumnName="DIACHITHUONGTRU" />
+          <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+          <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+          <ScalarProperty Name="SOCCCD" ColumnName="SOCCCD" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHONGTROes">
+      <EntityTypeMapping TypeName="QLPhongTroModel.PHONGTRO">
+        <MappingFragment StoreEntitySet="PHONGTRO">
+          <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+          <ScalarProperty Name="DIENTICH" ColumnName="DIENTICH" />
+          <ScalarProperty Name="TANG" ColumnName="TANG" />
+          <ScalarProperty Name="SOPHONG" ColumnName="SOPHONG" />
+          <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+          <ScalarProperty Name="LOAIPHONG" ColumnName="LOAIPHONG" />
+          <ScalarProperty Name="GIAPHONG" ColumnName="GIAPHONG" />
+          <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+          <ScalarProperty Name="MAVATCHAT" ColumnName="MAVATCHAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TAIKHOANs">
+      <EntityTypeMapping TypeName="QLPhongTroModel.TAIKHOAN">
+        <MappingFragment StoreEntitySet="TAIKHOAN">
+          <ScalarProperty Name="MATK" ColumnName="MATK" />
+          <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+          <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+          <ScalarProperty Name="NGAYDANGKI" ColumnName="NGAYDANGKI" />
+          <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+          <ScalarProperty Name="MAND" ColumnName="MAND" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

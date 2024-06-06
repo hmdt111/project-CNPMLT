@@ -1,0 +1,47 @@
+﻿@model IEnumerable<DOANCUOIKI.DB.DICHVU>
+
+@{
+    ViewBag.Title = "DichVuHome";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DỊCH VỤ</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>MÃ DỊCH VỤ</td>
+            <td>TÊN DỊCH VỤ </td>
+            <td>GIÁ TIỀN DỊCH VỤ</td>
+            
+            @*<td>EDIT</td>
+            <td>DELETE</td>*@
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.MADV</td>
+                <td>
+                   @item.TENDV
+                </td>
+                <td>
+                    @item.GIATIENDV
+                </td>
+                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MADV }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MADV }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MADV })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+
+
+</table>

@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLPhongTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="COSOVATCHAT">
+    <Key>
+      <PropertyRef Name="MAVATCHAT" />
+    </Key>
+    <Property Name="MAVATCHAT" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENVATCHAT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GIAVAtCHAT" Type="float" />
+  </EntityType>
+  <EntityType Name="DICHVU">
+    <Key>
+      <PropertyRef Name="MADV" />
+    </Key>
+    <Property Name="MADV" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENDV" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="GIATIENDV" Type="float" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="MAHOADON" />
+    </Key>
+    <Property Name="MAHOADON" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TIENDIEN" Type="float" />
+    <Property Name="TIENNUOC" Type="float" />
+    <Property Name="TONGTIEN" Type="float" />
+    <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+    <Property Name="TIENPHONG" Type="float" />
+    <Property Name="TENKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TIENNO" Type="float" />
+    <Property Name="NGAYBATDAU" Type="date" />
+    <Property Name="NGAYKETTHUC" Type="date" />
+    <Property Name="TIENDV" Type="float" />
+  </EntityType>
+  <EntityType Name="HOPDONG">
+    <Key>
+      <PropertyRef Name="MAHD" />
+    </Key>
+    <Property Name="MAHD" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="NGAYKKIHD" Type="date" />
+    <Property Name="NGAYHETHANHD" Type="date" />
+    <Property Name="TIENCOC" Type="float" />
+    <Property Name="MAPHONG" Type="char" MaxLength="4" />
+    <Property Name="MAHOADON" Type="char" MaxLength="4" />
+    <Property Name="MAND" Type="char" MaxLength="4" />
+    <Property Name="MADV" Type="char" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="NGUOIDUNG">
+    <Key>
+      <PropertyRef Name="MAND" />
+    </Key>
+    <Property Name="MAND" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENND" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DIACHITHUONGTRU" Type="nvarchar" MaxLength="50" />
+    <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
+    <Property Name="NGAYSINH" Type="date" />
+    <Property Name="SOCCCD" Type="char" MaxLength="12" />
+    <Property Name="SDT" Type="char" MaxLength="10" />
+    <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="PHONGTRO">
+    <Key>
+      <PropertyRef Name="MAPHONG" />
+    </Key>
+    <Property Name="MAPHONG" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="DIENTICH" Type="float" />
+    <Property Name="TANG" Type="int" />
+    <Property Name="SOPHONG" Type="int" Nullable="false" />
+    <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="30" />
+    <Property Name="LOAIPHONG" Type="nvarchar" MaxLength="50" />
+    <Property Name="GIAPHONG" Type="float" />
+    <Property Name="HINHANH" Type="nvarchar" MaxLength="30" />
+    <Property Name="MAVATCHAT" Type="char" MaxLength="4" />
+  </EntityType>
+  <EntityType Name="TAIKHOAN">
+    <Key>
+      <PropertyRef Name="MATK" />
+    </Key>
+    <Property Name="MATK" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENDN" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MATKHAU" Type="varchar" MaxLength="50" />
+    <Property Name="NGAYDANGKI" Type="date" />
+    <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
+    <Property Name="MAND" Type="char" MaxLength="4" />
+  </EntityType>
+  <Association Name="FK__HOPDONG__MADV__59FA5E80">
+    <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DICHVU">
+        <PropertyRef Name="MADV" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="MADV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOPDONG__MAHOADO__5812160E">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="MAHOADON" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="MAHOADON" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOPDONG__MAND__59063A47">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MAND" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="MAND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__HOPDONG__MAPHONG__571DF1D5">
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+    <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHONGTRO">
+        <PropertyRef Name="MAPHONG" />
+      </Principal>
+      <Dependent Role="HOPDONG">
+        <PropertyRef Name="MAPHONG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PHONGTRO__MAVATC__5441852A">
+    <End Role="COSOVATCHAT" Type="Self.COSOVATCHAT" Multiplicity="0..1" />
+    <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COSOVATCHAT">
+        <PropertyRef Name="MAVATCHAT" />
+      </Principal>
+      <Dependent Role="PHONGTRO">
+        <PropertyRef Name="MAVATCHAT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TAIKHOAN__MAND__4F7CD00D">
+    <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+    <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NGUOIDUNG">
+        <PropertyRef Name="MAND" />
+      </Principal>
+      <Dependent Role="TAIKHOAN">
+        <PropertyRef Name="MAND" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLPhongTroModelStoreContainer">
+    <EntitySet Name="COSOVATCHAT" EntityType="Self.COSOVATCHAT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOPDONG" EntityType="Self.HOPDONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHONGTRO" EntityType="Self.PHONGTRO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__HOPDONG__MADV__59FA5E80" Association="Self.FK__HOPDONG__MADV__59FA5E80">
+      <End Role="DICHVU" EntitySet="DICHVU" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOPDONG__MAHOADO__5812160E" Association="Self.FK__HOPDONG__MAHOADO__5812160E">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOPDONG__MAND__59063A47" Association="Self.FK__HOPDONG__MAND__59063A47">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__HOPDONG__MAPHONG__571DF1D5" Association="Self.FK__HOPDONG__MAPHONG__571DF1D5">
+      <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+      <End Role="HOPDONG" EntitySet="HOPDONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PHONGTRO__MAVATC__5441852A" Association="Self.FK__PHONGTRO__MAVATC__5441852A">
+      <End Role="COSOVATCHAT" EntitySet="COSOVATCHAT" />
+      <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TAIKHOAN__MAND__4F7CD00D" Association="Self.FK__TAIKHOAN__MAND__4F7CD00D">
+      <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+      <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

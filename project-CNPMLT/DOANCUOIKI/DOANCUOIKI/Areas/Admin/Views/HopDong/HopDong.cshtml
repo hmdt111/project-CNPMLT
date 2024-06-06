@@ -1,0 +1,72 @@
+﻿@model IEnumerable<DOANCUOIKI.DB.HOPDONG>
+
+@{
+    ViewBag.Title = "HopDong";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>HopDong</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYKKIHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGAYHETHANHD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIENCOC)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DICHVU.TENDV)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HOADON.GHICHU)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NGUOIDUNG.TENND)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PHONGTRO.TRANGTHAI)
+        </th>
+        <th>CCCD</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYKKIHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGAYHETHANHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIENCOC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DICHVU.TENDV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOADON.GHICHU)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NGUOIDUNG.TENND)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PHONGTRO.TRANGTHAI)
+        </td>
+        <td>@item.NGUOIDUNG.SOCCCD</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MAHD }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MAHD }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MAHD })
+        </td>
+    </tr>
+}
+
+</table>

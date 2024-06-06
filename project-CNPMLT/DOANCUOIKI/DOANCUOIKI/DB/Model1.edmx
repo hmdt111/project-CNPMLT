@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="QLPhongTroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="COSOVATCHAT">
+          <Key>
+            <PropertyRef Name="MAVATCHAT" />
+          </Key>
+          <Property Name="MAVATCHAT" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENVATCHAT" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GIAVAtCHAT" Type="float" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+          </Key>
+          <Property Name="MADV" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENDV" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="GIATIENDV" Type="float" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TIENDIEN" Type="float" />
+          <Property Name="TIENNUOC" Type="float" />
+          <Property Name="TONGTIEN" Type="float" />
+          <Property Name="GHICHU" Type="nvarchar" MaxLength="100" />
+          <Property Name="TIENPHONG" Type="float" />
+          <Property Name="TENKH" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="TIENNO" Type="float" />
+          <Property Name="NGAYBATDAU" Type="date" />
+          <Property Name="NGAYKETTHUC" Type="date" />
+          <Property Name="TIENDV" Type="float" />
+        </EntityType>
+        <EntityType Name="HOPDONG">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="NGAYKKIHD" Type="date" />
+          <Property Name="NGAYHETHANHD" Type="date" />
+          <Property Name="TIENCOC" Type="float" />
+          <Property Name="MAPHONG" Type="char" MaxLength="4" />
+          <Property Name="MAHOADON" Type="char" MaxLength="4" />
+          <Property Name="MAND" Type="char" MaxLength="4" />
+          <Property Name="MADV" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="MAND" />
+          </Key>
+          <Property Name="MAND" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENND" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIACHITHUONGTRU" Type="nvarchar" MaxLength="50" />
+          <Property Name="GIOITINH" Type="nvarchar" MaxLength="3" />
+          <Property Name="NGAYSINH" Type="date" />
+          <Property Name="SOCCCD" Type="char" MaxLength="12" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PHONGTRO">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="DIENTICH" Type="float" />
+          <Property Name="TANG" Type="int" />
+          <Property Name="SOPHONG" Type="int" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="nvarchar" MaxLength="30" />
+          <Property Name="LOAIPHONG" Type="nvarchar" MaxLength="50" />
+          <Property Name="GIAPHONG" Type="float" />
+          <Property Name="HINHANH" Type="nvarchar" MaxLength="30" />
+          <Property Name="MAVATCHAT" Type="char" MaxLength="4" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="TENDN" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MATKHAU" Type="varchar" MaxLength="50" />
+          <Property Name="NGAYDANGKI" Type="date" />
+          <Property Name="CHUCVU" Type="nvarchar" MaxLength="50" />
+          <Property Name="MAND" Type="char" MaxLength="4" />
+        </EntityType>
+        <Association Name="FK__HOPDONG__MADV__59FA5E80">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="MADV" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MADV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAHOADO__5812160E">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAND__59063A47">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="MAND" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAPHONG__571DF1D5">
+          <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGTRO">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PHONGTRO__MAVATC__5441852A">
+          <End Role="COSOVATCHAT" Type="Self.COSOVATCHAT" Multiplicity="0..1" />
+          <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COSOVATCHAT">
+              <PropertyRef Name="MAVATCHAT" />
+            </Principal>
+            <Dependent Role="PHONGTRO">
+              <PropertyRef Name="MAVATCHAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAIKHOAN__MAND__4F7CD00D">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="MAND" />
+            </Principal>
+            <Dependent Role="TAIKHOAN">
+              <PropertyRef Name="MAND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="QLPhongTroModelStoreContainer">
+          <EntitySet Name="COSOVATCHAT" EntityType="Self.COSOVATCHAT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DICHVU" EntityType="Self.DICHVU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HOPDONG" EntityType="Self.HOPDONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NGUOIDUNG" EntityType="Self.NGUOIDUNG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHONGTRO" EntityType="Self.PHONGTRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TAIKHOAN" EntityType="Self.TAIKHOAN" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__HOPDONG__MADV__59FA5E80" Association="Self.FK__HOPDONG__MADV__59FA5E80">
+            <End Role="DICHVU" EntitySet="DICHVU" />
+            <End Role="HOPDONG" EntitySet="HOPDONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAHOADO__5812160E" Association="Self.FK__HOPDONG__MAHOADO__5812160E">
+            <End Role="HOADON" EntitySet="HOADON" />
+            <End Role="HOPDONG" EntitySet="HOPDONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAND__59063A47" Association="Self.FK__HOPDONG__MAND__59063A47">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="HOPDONG" EntitySet="HOPDONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAPHONG__571DF1D5" Association="Self.FK__HOPDONG__MAPHONG__571DF1D5">
+            <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+            <End Role="HOPDONG" EntitySet="HOPDONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PHONGTRO__MAVATC__5441852A" Association="Self.FK__PHONGTRO__MAVATC__5441852A">
+            <End Role="COSOVATCHAT" EntitySet="COSOVATCHAT" />
+            <End Role="PHONGTRO" EntitySet="PHONGTRO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAIKHOAN__MAND__4F7CD00D" Association="Self.FK__TAIKHOAN__MAND__4F7CD00D">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNG" />
+            <End Role="TAIKHOAN" EntitySet="TAIKHOAN" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="QLPhongTroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="COSOVATCHAT">
+          <Key>
+            <PropertyRef Name="MAVATCHAT" />
+          </Key>
+          <Property Name="MAVATCHAT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENVATCHAT" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GIAVAtCHAT" Type="Double" />
+          <NavigationProperty Name="PHONGTROes" Relationship="Self.FK__PHONGTRO__MAVATC__5441852A" FromRole="COSOVATCHAT" ToRole="PHONGTRO" />
+        </EntityType>
+        <EntityType Name="DICHVU">
+          <Key>
+            <PropertyRef Name="MADV" />
+          </Key>
+          <Property Name="MADV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENDV" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GIATIENDV" Type="Double" />
+          <NavigationProperty Name="HOPDONGs" Relationship="Self.FK__HOPDONG__MADV__59FA5E80" FromRole="DICHVU" ToRole="HOPDONG" />
+        </EntityType>
+        <EntityType Name="HOADON">
+          <Key>
+            <PropertyRef Name="MAHOADON" />
+          </Key>
+          <Property Name="MAHOADON" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TIENDIEN" Type="Double" />
+          <Property Name="TIENNUOC" Type="Double" />
+          <Property Name="TONGTIEN" Type="Double" />
+          <Property Name="GHICHU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TIENPHONG" Type="Double" />
+          <Property Name="TENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TIENNO" Type="Double" />
+          <Property Name="NGAYBATDAU" Type="DateTime" Precision="0" />
+          <Property Name="NGAYKETTHUC" Type="DateTime" Precision="0" />
+          <Property Name="TIENDV" Type="Double" />
+          <NavigationProperty Name="HOPDONGs" Relationship="Self.FK__HOPDONG__MAHOADO__5812160E" FromRole="HOADON" ToRole="HOPDONG" />
+        </EntityType>
+        <EntityType Name="HOPDONG">
+          <Key>
+            <PropertyRef Name="MAHD" />
+          </Key>
+          <Property Name="MAHD" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NGAYKKIHD" Type="DateTime" Precision="0" />
+          <Property Name="NGAYHETHANHD" Type="DateTime" Precision="0" />
+          <Property Name="TIENCOC" Type="Double" />
+          <Property Name="MAPHONG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MAHOADON" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MAND" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="MADV" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DICHVU" Relationship="Self.FK__HOPDONG__MADV__59FA5E80" FromRole="HOPDONG" ToRole="DICHVU" />
+          <NavigationProperty Name="HOADON" Relationship="Self.FK__HOPDONG__MAHOADO__5812160E" FromRole="HOPDONG" ToRole="HOADON" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__HOPDONG__MAND__59063A47" FromRole="HOPDONG" ToRole="NGUOIDUNG" />
+          <NavigationProperty Name="PHONGTRO" Relationship="Self.FK__HOPDONG__MAPHONG__571DF1D5" FromRole="HOPDONG" ToRole="PHONGTRO" />
+        </EntityType>
+        <EntityType Name="NGUOIDUNG">
+          <Key>
+            <PropertyRef Name="MAND" />
+          </Key>
+          <Property Name="MAND" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENND" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DIACHITHUONGTRU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIOITINH" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYSINH" Type="DateTime" Precision="0" />
+          <Property Name="SOCCCD" Type="String" MaxLength="12" FixedLength="true" Unicode="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HOPDONGs" Relationship="Self.FK__HOPDONG__MAND__59063A47" FromRole="NGUOIDUNG" ToRole="HOPDONG" />
+          <NavigationProperty Name="TAIKHOANs" Relationship="Self.FK__TAIKHOAN__MAND__4F7CD00D" FromRole="NGUOIDUNG" ToRole="TAIKHOAN" />
+        </EntityType>
+        <EntityType Name="PHONGTRO">
+          <Key>
+            <PropertyRef Name="MAPHONG" />
+          </Key>
+          <Property Name="MAPHONG" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DIENTICH" Type="Double" />
+          <Property Name="TANG" Type="Int32" />
+          <Property Name="SOPHONG" Type="Int32" Nullable="false" />
+          <Property Name="TRANGTHAI" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="LOAIPHONG" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIAPHONG" Type="Double" />
+          <Property Name="HINHANH" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MAVATCHAT" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="COSOVATCHAT" Relationship="Self.FK__PHONGTRO__MAVATC__5441852A" FromRole="PHONGTRO" ToRole="COSOVATCHAT" />
+          <NavigationProperty Name="HOPDONGs" Relationship="Self.FK__HOPDONG__MAPHONG__571DF1D5" FromRole="PHONGTRO" ToRole="HOPDONG" />
+        </EntityType>
+        <EntityType Name="TAIKHOAN">
+          <Key>
+            <PropertyRef Name="MATK" />
+          </Key>
+          <Property Name="MATK" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TENDN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="MATKHAU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NGAYDANGKI" Type="DateTime" Precision="0" />
+          <Property Name="CHUCVU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MAND" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="NGUOIDUNG" Relationship="Self.FK__TAIKHOAN__MAND__4F7CD00D" FromRole="TAIKHOAN" ToRole="NGUOIDUNG" />
+        </EntityType>
+        <Association Name="FK__PHONGTRO__MAVATC__5441852A">
+          <End Role="COSOVATCHAT" Type="Self.COSOVATCHAT" Multiplicity="0..1" />
+          <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="COSOVATCHAT">
+              <PropertyRef Name="MAVATCHAT" />
+            </Principal>
+            <Dependent Role="PHONGTRO">
+              <PropertyRef Name="MAVATCHAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MADV__59FA5E80">
+          <End Role="DICHVU" Type="Self.DICHVU" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DICHVU">
+              <PropertyRef Name="MADV" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MADV" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAHOADO__5812160E">
+          <End Role="HOADON" Type="Self.HOADON" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HOADON">
+              <PropertyRef Name="MAHOADON" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAHOADON" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAND__59063A47">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="MAND" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HOPDONG__MAPHONG__571DF1D5">
+          <End Role="PHONGTRO" Type="Self.PHONGTRO" Multiplicity="0..1" />
+          <End Role="HOPDONG" Type="Self.HOPDONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHONGTRO">
+              <PropertyRef Name="MAPHONG" />
+            </Principal>
+            <Dependent Role="HOPDONG">
+              <PropertyRef Name="MAPHONG" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TAIKHOAN__MAND__4F7CD00D">
+          <End Role="NGUOIDUNG" Type="Self.NGUOIDUNG" Multiplicity="0..1" />
+          <End Role="TAIKHOAN" Type="Self.TAIKHOAN" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NGUOIDUNG">
+              <PropertyRef Name="MAND" />
+            </Principal>
+            <Dependent Role="TAIKHOAN">
+              <PropertyRef Name="MAND" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBQLPhongTroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="COSOVATCHATs" EntityType="Self.COSOVATCHAT" />
+          <EntitySet Name="DICHVUs" EntityType="Self.DICHVU" />
+          <EntitySet Name="HOADONs" EntityType="Self.HOADON" />
+          <EntitySet Name="HOPDONGs" EntityType="Self.HOPDONG" />
+          <EntitySet Name="NGUOIDUNGs" EntityType="Self.NGUOIDUNG" />
+          <EntitySet Name="PHONGTROes" EntityType="Self.PHONGTRO" />
+          <EntitySet Name="TAIKHOANs" EntityType="Self.TAIKHOAN" />
+          <AssociationSet Name="FK__PHONGTRO__MAVATC__5441852A" Association="Self.FK__PHONGTRO__MAVATC__5441852A">
+            <End Role="COSOVATCHAT" EntitySet="COSOVATCHATs" />
+            <End Role="PHONGTRO" EntitySet="PHONGTROes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MADV__59FA5E80" Association="Self.FK__HOPDONG__MADV__59FA5E80">
+            <End Role="DICHVU" EntitySet="DICHVUs" />
+            <End Role="HOPDONG" EntitySet="HOPDONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAHOADO__5812160E" Association="Self.FK__HOPDONG__MAHOADO__5812160E">
+            <End Role="HOADON" EntitySet="HOADONs" />
+            <End Role="HOPDONG" EntitySet="HOPDONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAND__59063A47" Association="Self.FK__HOPDONG__MAND__59063A47">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="HOPDONG" EntitySet="HOPDONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HOPDONG__MAPHONG__571DF1D5" Association="Self.FK__HOPDONG__MAPHONG__571DF1D5">
+            <End Role="PHONGTRO" EntitySet="PHONGTROes" />
+            <End Role="HOPDONG" EntitySet="HOPDONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TAIKHOAN__MAND__4F7CD00D" Association="Self.FK__TAIKHOAN__MAND__4F7CD00D">
+            <End Role="NGUOIDUNG" EntitySet="NGUOIDUNGs" />
+            <End Role="TAIKHOAN" EntitySet="TAIKHOANs" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="QLPhongTroModelStoreContainer" CdmEntityContainer="DBQLPhongTroEntities">
+          <EntitySetMapping Name="COSOVATCHATs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.COSOVATCHAT">
+              <MappingFragment StoreEntitySet="COSOVATCHAT">
+                <ScalarProperty Name="MAVATCHAT" ColumnName="MAVATCHAT" />
+                <ScalarProperty Name="TENVATCHAT" ColumnName="TENVATCHAT" />
+                <ScalarProperty Name="GIAVAtCHAT" ColumnName="GIAVAtCHAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DICHVUs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.DICHVU">
+              <MappingFragment StoreEntitySet="DICHVU">
+                <ScalarProperty Name="MADV" ColumnName="MADV" />
+                <ScalarProperty Name="TENDV" ColumnName="TENDV" />
+                <ScalarProperty Name="GIATIENDV" ColumnName="GIATIENDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOADONs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.HOADON">
+              <MappingFragment StoreEntitySet="HOADON">
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+                <ScalarProperty Name="TIENDIEN" ColumnName="TIENDIEN" />
+                <ScalarProperty Name="TIENNUOC" ColumnName="TIENNUOC" />
+                <ScalarProperty Name="TONGTIEN" ColumnName="TONGTIEN" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+                <ScalarProperty Name="TIENPHONG" ColumnName="TIENPHONG" />
+                <ScalarProperty Name="TENKH" ColumnName="TENKH" />
+                <ScalarProperty Name="TIENNO" ColumnName="TIENNO" />
+                <ScalarProperty Name="NGAYBATDAU" ColumnName="NGAYBATDAU" />
+                <ScalarProperty Name="NGAYKETTHUC" ColumnName="NGAYKETTHUC" />
+                <ScalarProperty Name="TIENDV" ColumnName="TIENDV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HOPDONGs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.HOPDONG">
+              <MappingFragment StoreEntitySet="HOPDONG">
+                <ScalarProperty Name="MAHD" ColumnName="MAHD" />
+                <ScalarProperty Name="NGAYKKIHD" ColumnName="NGAYKKIHD" />
+                <ScalarProperty Name="NGAYHETHANHD" ColumnName="NGAYHETHANHD" />
+                <ScalarProperty Name="TIENCOC" ColumnName="TIENCOC" />
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="MAHOADON" ColumnName="MAHOADON" />
+                <ScalarProperty Name="MAND" ColumnName="MAND" />
+                <ScalarProperty Name="MADV" ColumnName="MADV" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NGUOIDUNGs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.NGUOIDUNG">
+              <MappingFragment StoreEntitySet="NGUOIDUNG">
+                <ScalarProperty Name="MAND" ColumnName="MAND" />
+                <ScalarProperty Name="TENND" ColumnName="TENND" />
+                <ScalarProperty Name="DIACHITHUONGTRU" ColumnName="DIACHITHUONGTRU" />
+                <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+                <ScalarProperty Name="NGAYSINH" ColumnName="NGAYSINH" />
+                <ScalarProperty Name="SOCCCD" ColumnName="SOCCCD" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHONGTROes">
+            <EntityTypeMapping TypeName="QLPhongTroModel.PHONGTRO">
+              <MappingFragment StoreEntitySet="PHONGTRO">
+                <ScalarProperty Name="MAPHONG" ColumnName="MAPHONG" />
+                <ScalarProperty Name="DIENTICH" ColumnName="DIENTICH" />
+                <ScalarProperty Name="TANG" ColumnName="TANG" />
+                <ScalarProperty Name="SOPHONG" ColumnName="SOPHONG" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="LOAIPHONG" ColumnName="LOAIPHONG" />
+                <ScalarProperty Name="GIAPHONG" ColumnName="GIAPHONG" />
+                <ScalarProperty Name="HINHANH" ColumnName="HINHANH" />
+                <ScalarProperty Name="MAVATCHAT" ColumnName="MAVATCHAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TAIKHOANs">
+            <EntityTypeMapping TypeName="QLPhongTroModel.TAIKHOAN">
+              <MappingFragment StoreEntitySet="TAIKHOAN">
+                <ScalarProperty Name="MATK" ColumnName="MATK" />
+                <ScalarProperty Name="TENDN" ColumnName="TENDN" />
+                <ScalarProperty Name="MATKHAU" ColumnName="MATKHAU" />
+                <ScalarProperty Name="NGAYDANGKI" ColumnName="NGAYDANGKI" />
+                <ScalarProperty Name="CHUCVU" ColumnName="CHUCVU" />
+                <ScalarProperty Name="MAND" ColumnName="MAND" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
